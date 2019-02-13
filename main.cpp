@@ -3,5 +3,6 @@
 
 int main() {
     Core core;
+    core.setIterations(50);
     return 0;
 }

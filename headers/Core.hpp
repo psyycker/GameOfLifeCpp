@@ -8,7 +8,13 @@
 class Core{
 public:
     Core();
-    Core(int sizeY, int sizeX, int iterations);
+    void setIterations(const int& iterations);
+    const int getIterations();
+    void generateMap(const int& sizeY, const int& sizeX);
+
+private:
+    int iterations;
+    int **map;
 };
 
 #endif //GAMEOFLIFE_CORE_HPP

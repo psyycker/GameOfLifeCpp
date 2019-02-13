@@ -9,6 +9,22 @@ Core::Core() {
     std::cout << "hello world" << std::endl;
 }
 
-Core::Core(int sizeY, int sizeX, int iterations) {
+void Core::setIterations(const int &iterations) {
+    this->iterations = iterations;
+}
 
+const int Core::getIterations() {
+    return this->iterations;
+}
+
+int ** const doubleMalloc(const int &sizeY, const int &sizeX) {
+    int **map = new int*[sizeY];
+    for (int y = 0; y < sizeY; y++) {
+        map[y] = new int[sizeX];
+    }
+    return map;
+}
+
+void Core::generateMap(const int &sizeY, const int &sizeX) {
+    this->map = doubleMalloc(sizeY, sizeX);
 }
