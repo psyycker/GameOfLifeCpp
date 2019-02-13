@@ -10,11 +10,15 @@ public:
     Core();
     void setIterations(const int& iterations);
     const int getIterations();
-    void generateMap(const int& sizeY, const int& sizeX);
+    void initializeMap(const int& sizeY, const int& sizeX);
+    void populateMap(const bool& random);
+    void printMap();
 
 private:
     int iterations;
     int **map;
+    int sizeX;
+    int sizeY;
 };
 
 #endif //GAMEOFLIFE_CORE_HPP
