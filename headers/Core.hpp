@@ -19,8 +19,6 @@ public:
 private:
     int iterations;
     Map map;
-    int sizeX;
-    int sizeY;
 };
 
 #endif //GAMEOFLIFE_CORE_HPP
