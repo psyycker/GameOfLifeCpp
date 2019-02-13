@@ -5,6 +5,8 @@
 #ifndef GAMEOFLIFE_CORE_HPP
 #define GAMEOFLIFE_CORE_HPP
 
+#include "./Map.hpp"
+
 class Core{
 public:
     Core();
@@ -16,7 +18,7 @@ public:
 
 private:
     int iterations;
-    int **map;
+    Map map;
     int sizeX;
     int sizeY;
 };

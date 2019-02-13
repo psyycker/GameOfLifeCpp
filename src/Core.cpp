@@ -32,11 +32,16 @@ int ** const doubleMalloc(const int &sizeY, const int &sizeX) {
  * @param sizeX
  */
 void Core::initializeMap(const int &sizeY, const int &sizeX) {
-    this->map = doubleMalloc(sizeY, sizeX);
+    this->map = Map(doubleMalloc(sizeY, sizeX));
     this->sizeX = sizeX;
     this->sizeY = sizeY;
 }
 
+/**
+ * This wont create the map, just populate it.
+ * Use it only if map is generated
+ * @param random
+ */
 void Core::populateMap(const bool &random) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -44,9 +49,9 @@ void Core::populateMap(const bool &random) {
     for (int y = 0; y < this->sizeY; y++) {
         for (int x = 0; x < this->sizeX; x++) {
             if (random) {
-                this->map[y][x] = dis(gen);
+                this->map.setValueAtPosition(y, x, dis(gen));
             } else {
-                this->map[y][x] = 0;
+                this->map.setValueAtPosition(y, x, 0);
             }
         }
     }
@@ -55,7 +60,7 @@ void Core::populateMap(const bool &random) {
 void Core::printMap() {
     for (int y = 0; y < this->sizeY; y++) {
         for (int x = 0; x < this->sizeX; x++) {
-            std::cout << this->map[y][x];
+            std::cout << this->map.getValueAtPosition(y, x);
         }
         std::cout << std::endl;
     }
