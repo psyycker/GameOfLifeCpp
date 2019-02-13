@@ -10,7 +10,7 @@
 class ThreadManager {
 public:
     ThreadManager(const int& calcThreadNumber, const int&displayThreadNumber);
-    void start(const Map* map);
+    void start(Map* map);
 private:
     int calcThreadNumber;
     int displayThreadNumber;
