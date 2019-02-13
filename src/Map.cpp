@@ -45,6 +45,8 @@ void Map::populateMap(const bool &random) {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, 1);
     for (int y = 0; y < this->getSizeY(); y++) {
+        if (y > 0) {
+        }
         for (int x = 0; x < this->getSizeX(); x++) {
             if (random) {
                 this->setValueAtPosition(y, x, dis(gen));
