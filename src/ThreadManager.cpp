@@ -9,7 +9,9 @@ ThreadManager::ThreadManager(const int &calcThreadNumber, const int &displayThre
     this->displayThreadNumber = displayThreadNumber;
 }
 
-void ThreadManager::start(const int **map) {
+
+
+void ThreadManager::start(const Map* map) {
 
 }
 

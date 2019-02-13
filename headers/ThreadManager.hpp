@@ -5,10 +5,12 @@
 #ifndef GAMEOFLIFE_MAPMANIPULATOR_HPP
 #define GAMEOFLIFE_MAPMANIPULATOR_HPP
 
+#include "Map.hpp"
+
 class ThreadManager {
 public:
     ThreadManager(const int& calcThreadNumber, const int&displayThreadNumber);
-    void start(const int**map);
+    void start(const Map* map);
 private:
     int calcThreadNumber;
     int displayThreadNumber;

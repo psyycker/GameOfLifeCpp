@@ -6,15 +6,14 @@
 #define GAMEOFLIFE_CORE_HPP
 
 #include "./Map.hpp"
+#include "./ThreadManager.hpp"
 
 class Core{
 public:
     Core();
     void setIterations(const int& iterations);
     const int getIterations();
-    void initializeMap(const int& sizeY, const int& sizeX);
-    void populateMap(const bool& random);
-    void printMap();
+    void startGameOfLife(const int& sizeY, const int&sizeX);
 
 private:
     int iterations;
