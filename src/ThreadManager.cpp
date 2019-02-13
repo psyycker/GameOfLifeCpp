@@ -21,11 +21,6 @@ void startCalcs(int** clonedMap, Map* map, const int& start, const int& range) {
 }
 
 int** ThreadManager::start(Map* map) {
-    /*
-     * Todo : Les threads de calcul vont se lancer et s'arreter sans cesse pour permettre de soumettre une nouvelle map.
-     * Les threads d'affichage eux vont tourner en boucle et afficher 1 par 1 les tableaux. Pour eviter les desynchros, ils vont
-     * s'attendre entre eux
-     */
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
     std::cout << "starting..." << std::endl;
