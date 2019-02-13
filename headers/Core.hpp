@@ -13,7 +13,10 @@ public:
     Core();
     void setIterations(const int& iterations);
     const int getIterations();
-    void startGameOfLife(const int& sizeY, const int&sizeX);
+    void initGameOfLife(const int& sizeY, const int&sizeX);
+    void startGameOfLife();
+    void iterateGameOfLife();
+    Map& getMap();
 
 private:
     int iterations;

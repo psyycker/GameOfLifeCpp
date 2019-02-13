@@ -120,7 +120,6 @@ const int computeValue(const int& value, const int& currentValue) {
 const int Map::getNewValueForPosition(const int &y, const int &x) {
     int counter = getTopCell(y, x);
     counter += getBotCell(y, x);
-    counter += getBotCell(y, x);
     counter += getLeftCell(y, x);
     counter += getRightCell(y, x);
     counter += getTopLeftCell(y, x);
@@ -169,16 +168,16 @@ int Map::getTopRightCell(const int &y, const int &x) {
     if (tempX > sizeX - 1 || tempY < 0) {
         return 0;
     }
-    return getValueAtPosition(y, tempX);
+    return getValueAtPosition(tempY, tempX);
 }
 
 int Map::getBotRightCell(const int &y, const int &x) {
     int tempX = x + 1;
     int tempY = y + 1;
-    if (tempX > sizeX - 1 || tempY > sizeY) {
+    if (tempX > sizeX - 1 || tempY > sizeY - 1) {
         return 0;
     }
-    return getValueAtPosition(y, tempX);
+    return getValueAtPosition(tempY, tempX);
 }
 
 int Map::getTopLeftCell(const int &y, const int &x) {
@@ -187,16 +186,16 @@ int Map::getTopLeftCell(const int &y, const int &x) {
     if (tempX < 0 || tempY < 0) {
         return 0;
     }
-    return getValueAtPosition(y, tempX);
+    return getValueAtPosition(tempY, tempX);
 }
 
 int Map::getBotLeftCell(const int &y, const int &x) {
     int tempX = x - 1;
     int tempY = y + 1;
-    if (tempX < 0 || tempY > sizeY) {
+    if (tempX < 0 || tempY > sizeY - 1) {
         return 0;
     }
-    return getValueAtPosition(y, tempX);
+    return getValueAtPosition(tempY, tempX);
 }
 
 
