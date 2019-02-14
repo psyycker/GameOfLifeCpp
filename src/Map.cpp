@@ -54,6 +54,7 @@ void Map::populateMap(const bool &random) {
                 this->setValueAtPosition(y, x, 0);
             }
         }
+
     }
 }
 
