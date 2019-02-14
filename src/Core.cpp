@@ -17,15 +17,29 @@ const int Core::getIterations() {
     return this->iterations;
 }
 
-void Core::startGameOfLife(const int& sizeY, const int&sizeX) {
+void Core::initGameOfLife(const int &sizeY, const int &sizeX) {
     this->map = Map();
     std::cout << "Initializing..." << std::endl;
-    this->map.initializeMap(10000, 10000);
+    this->map.initializeMap(sizeY, sizeX);
     std::cout << "Initialized !" << std::endl;
     std::cout << "Populating..." << std::endl;
     this->map.populateMap(true);
     std::cout << "Populated !" << std::endl;
-    //this->map.printMap();
-    ThreadManager manager(2, 2);
+}
+
+/**
+ * Will start the whole GoL in parallelism and just return a pointer on the ui queue
+ */
+void Core::startGameOfLife() {
+    ThreadManager manager(8, 2);
     manager.start(&this->map);
+}
+
+void Core::iterateGameOfLife() {
+    ThreadManager manager(4, 2);
+    manager.start(&this->map);
+}
+
+Map& Core::getMap() {
+    return this->map;
 }

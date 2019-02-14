@@ -20,21 +20,21 @@ void startCalcs(int** clonedMap, Map* map, const int& start, const int& range) {
     }
 }
 
-void ThreadManager::start(Map* map) {
-    /*
-     * Todo : Les threads de calcul vont se lancer et s'arreter sans cesse pour permettre de soumettre une nouvelle map.
-     * Les threads d'affichage eux vont tourner en boucle et afficher 1 par 1 les tableaux. Pour eviter les desynchros, ils vont
-     * s'attendre entre eux
-     */
+int** ThreadManager::start(Map* map) {
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
     std::cout << "starting..." << std::endl;
     int **cloneMap = map->clone();
-    //map->printMap();
-    std::thread test(startCalcs, cloneMap, map, 0, map->getSizeY());
-    test.join();
+    std::thread array[this->calcThreadNumber];
+    for (int index = 0; index < calcThreadNumber; index++) {
+        std::cout << index * map->getSizeY() / calcThreadNumber << std::endl;
+        std::cout << (index + 1) * map->getSizeY() / calcThreadNumber << std::endl;
+        array[index] = std::thread(startCalcs, cloneMap, map, index * map->getSizeY() / calcThreadNumber, (index + 1) * map->getSizeY() / calcThreadNumber);
+    }
+    for (int index = 0; index < calcThreadNumber; index++) {
+        array[index].join();
+    }
     map->setMap(cloneMap, true);
-    //map->printMap();
     end = std::chrono::system_clock::now();
     long elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds>(end-start).count();
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
